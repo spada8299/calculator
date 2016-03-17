@@ -29,6 +29,10 @@ class ViewController: UIViewController {
         } else if sender.tag == 1010 {
             self.displayLabel.append(0)
             self.displayLabel.append(0)
+        } else if sender.tag == 1011 {
+            self.displayLabel.dot()
+        } else if sender.tag == 1012 {
+            self.displayLabel.percentage()
         }
     }
 
@@ -44,6 +48,10 @@ class ViewController: UIViewController {
             try! self.core.addStep(+)
         case "-":
             try! self.core.addStep(-)
+        case "×":
+            try! self.core.addStep(*)
+        case "÷":
+            try! self.core.addStep(/)
         default:
             break
         }

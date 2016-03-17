@@ -53,5 +53,49 @@ class DisplayLabel: UILabel {
         }
         self.text = self.negative ? text.substringFromIndex(text.startIndex.advancedBy(1)) : "-" + text
     }
+    
+    // append decimal point
+    
+    var hasADot: Bool {
+        return self.text?.rangeOfString(".") != nil
+//        if self.text?.rangeOfString(".") != nil {
+//            return true
+//        } else {
+//            return false
+//        }
+    }
+    
+    func dot() {
+        guard let text = self.text else {
+            return
+        }
+        self.text = self.hasADot ? text : text + "."
+    }
+    
+    // percentage
+    
+    func percentage() {
+        guard let text = self.text else {
+            return
+        }
+//        var temp: String = ""
+//        if self.negative {
+//            temp = "-00" + text.substringFromIndex(text.startIndex.advancedBy(1))
+//        } else {
+//            temp = "00" + text
+//        }
+//        if self.hasADot {
+//            // 移動小數點
+//            let index = (temp.rangeOfString(".")?.startIndex)!
+//            temp = temp.substringToIndex(index.advancedBy(-2)) + "." + temp.substringWithRange(Range(start: index.advancedBy(-2), end: index)) + temp.substringFromIndex(index.advancedBy(1))
+//            while(temp[temp.startIndex] == "0" && temp[temp.startIndex.successor()] != "."){
+//                // kill the fucking zero.
+//                temp = temp.substringFromIndex(temp.startIndex.successor())
+//            }
+//        } else {
+//            // 加小數點
+//        }
+        self.text = String(Float(text)! * 0.01)
+    }
 
 }
